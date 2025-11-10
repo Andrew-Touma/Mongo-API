@@ -1,0 +1,104 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+#courses-list, #students-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.course-item, .student-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"], input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #004494;
+}
+
+.student-details {
+    background: #eef;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.student-details ul {
+    padding-left: 20px;
+}
+
+.student-details li {
+    border-bottom: 1px solid #ddf;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.student-item button[onclick^="showStudentDetails"] {
+    margin-left: 10px;
+}
+.student-details button {
+    background: #a00;
+    font-size: 0.8em;
+    padding: 5px 10px;
+}
+.student-details button:hover {
+    background: #c00;
+}
+.student-details select {
+    margin-right: 10px;
+    padding: 5px;
+}
