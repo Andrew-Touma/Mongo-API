@@ -4,16 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const studentsList = document.getElementById('students-list');
     const addStudentForm = document.getElementById('add-student-form');
 
-    let API_URL = '';
-
-    try {
-        const configResponse = await fetch('/api/config');
-        const config = await configResponse.json();
-        API_URL = `http://localhost:${config.port}/api`;
-    } catch (error) {
-        console.error('Error fetching API config:', error);
-        API_URL = 'http://localhost:3000/api';
-    }
+    let API_URL = 'https://mongoapi-leap.onrender.com/api';
 
     const showCoursesButton = document.getElementById('show-courses');
     const showStudentsButton = document.getElementById('show-students');

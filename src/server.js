@@ -174,11 +174,7 @@ app.post("/api/seed", async (req, res) => {
   res.json({ ok: true });
 });
 
-app.get('/api/config', (req, res) => {
 
-    res.json({ port: process.env.PORT || 3000 });
-
-});
 
 
 
