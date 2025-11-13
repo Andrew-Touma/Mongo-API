@@ -5,6 +5,7 @@ import { connectDB, getDB } from "./db.js";
 import { ObjectId } from "mongodb";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 dotenv.config();
 
 const app = express();
@@ -15,7 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "../public")));
 
-await connectDB();
+await connectDB(process.env.MONGO_URL, process.env.DB_NAME);
 const db = getDB();
 const coursesCol = db.collection(process.env.COURSES_COLLECTION);
 const studentsCol = db.collection(process.env.STUDENTS_COLLECTION);
@@ -179,9 +180,19 @@ app.post("/api/seed", async (req, res) => {
 
 
 app.use((req, res) => {
-
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-
+  const indexPath = path.join(__dirname, "../index.html");
+  fs.readFile(indexPath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading index.html:', err);
+      return res.status(500).send('Error loading the page.');
+    }
+    const API_URL = process.env.API_URL || 'http://localhost:3000/api'; // Fallback
+    const modifiedData = data.replace(
+      '<script id="api-config"></script>',
+      `<script id="api-config">window.API_URL = '${API_URL}';</script>`
+    );
+    res.send(modifiedData);
+  });
 });
 
 
